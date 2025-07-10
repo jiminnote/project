@@ -21,7 +21,7 @@ def rollback_files(organized_root, restore_path):
 def main():
     # organized_root = './organized_files'  # 이동된 곳
     # restore_path = '/Users/jimin/downloads'  # 되돌릴 곳
-    organized_root = './organized_Desktop_files'
+    organized_root = './screenshots'
     restore_path = '/Users/jimin/Desktop'
 
     if not os.path.exists(restore_path):

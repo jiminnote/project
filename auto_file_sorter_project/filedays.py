@@ -1,4 +1,4 @@
-# 파일별 수정일을 기준으로 정리
+# 파일별 수정일 / 확장자 기준으로 정리
 
 import os
 import shutil
@@ -13,7 +13,7 @@ def get_file_date(path):
 def move_files_date(src_path, dest_path):
     for file in os.listdir(src_path): # 원본 폴더에 있는 모든 항목에 대해 반복
         file_path = os.path.join(src_path, file) # 전체 파일 경로 생성
-        if os.path.isdir(file_path): # 
+        if os.path.isfile(file_path): # 
             try:
                 mod_date = get_file_date(file_path) # 해당 항목의 수정일 구함
                 dest_folder = os.path.join(dest_path, mod_date) # 날짜별 폴더 생성 경로 구성
@@ -29,7 +29,7 @@ def move_files_date(src_path, dest_path):
 
 def main() :
     src = '/Users/jimin/Desktop'
-    dest = './screenshots'
+    dest = '/Users/jimin/Desktop/folders'
 
     if not os.path.exists(src):
         print("No Exist!!")
