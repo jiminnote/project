@@ -1,0 +1,8 @@
+# 채팅 원본 파일 무시
+KakaoTalkChats*.txt
+
+# 파이썬 캐시/가상환경 무시
+__pycache__/
+*.pyc
+venv/
+.env
