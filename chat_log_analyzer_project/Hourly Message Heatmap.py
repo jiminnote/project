@@ -12,7 +12,7 @@ with open('KakaoTalkChats.txt', 'r', encoding='utf-8') as f:
         if re.match(r'^\d{4}년 \d+월 \d+일', line) and ',' in line:
             try:
                 # 날짜와 시간 파싱
-                time_part, msg_part = line.split(',', 1)  # ✅ 콤마 기준으로 1번만 나누기  # 예: '2023년 4월 8일 오전 10:21'
+                time_part, msg_part = line.split(',', 1)  # 콤마 기준으로 1번만 나누기  # 예: '2023년 4월 8일 오전 10:21'
                 user, _ = msg_part.split(':', 1)
                 user = user.strip()
                 match = re.search(r'(오전|오후) (\d+):(\d+)', time_part)
@@ -28,7 +28,7 @@ with open('KakaoTalkChats.txt', 'r', encoding='utf-8') as f:
             except Exception:
                 continue
 
-# ✅ 한글 폰트 설정
+# 한글 폰트 설정
 if platform.system() == 'Darwin':  # macOS
     plt.rc('font', family='AppleGothic')
 elif platform.system() == 'Windows':
@@ -38,7 +38,7 @@ else:  # Linux
 
 plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
-# 📊 그래프 그리기
+# 그래프 그리기
 hours = list(range(24))
 # counts = [hour_counter[h] for h in hours]
 
@@ -57,12 +57,12 @@ plt.grid(True)
 plt.legend()
 
 
-# 📌 메시지 수 요약 텍스트를 그래프에 추가
+# 메시지 수 요약 텍스트를 그래프에 추가
 sorted_users = sorted(user_message_count.items(), key=lambda x: x[1], reverse=True)
 summary_lines = [f"{user}: {count}" for user, count in sorted_users]
 summary_text = " > 참여도 순위 \n" + "\n".join(summary_lines)
 
-# 그래프 오른쪽 상단에 텍스트 삽입
+# 텍스트 삽입할 위치 지정
 plt.gcf().text(0.75, 0.6, summary_text, fontsize=10, bbox=dict(facecolor='white', alpha=0.6))
 
 plt.show()
