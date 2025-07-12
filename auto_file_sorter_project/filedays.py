@@ -2,6 +2,7 @@
 
 import os
 import shutil
+import argparse
 from datetime import datetime
 
 # 파일의 수정일 얻어오는 함수
@@ -28,14 +29,17 @@ def move_files_date(src_path, dest_path):
                 print(e)
 
 def main() :
-    src = '/Users/jimin/Desktop'
-    dest = '/Users/jimin/Desktop/folders'
+    parser = argparse.ArgumentParser(description="📂 파일을 날짜 + 확장자별로 정리하는 스크립트")
+    parser.add_argument('--src',type=str, required=True, help='원본 폴더 경로')
+    parser.add_argument('--dest', type=str, required=True, help='정리된 파일이 저당될 폴더 경로')
 
-    if not os.path.exists(src):
+    args = parser.parse_args()
+
+    if not os.path.exists(args.src):
         print("No Exist!!")
         return
 
-    move_files_date(src, dest)
+    move_files_date(args.src, args.dest)
     print("SUCCESS!!")
 if __name__ == "__main__":
     main()
